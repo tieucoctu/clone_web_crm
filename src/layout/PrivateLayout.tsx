@@ -1,6 +1,5 @@
-import { LogoutOutlined, MenuOutlined } from '@ant-design/icons';
 import { useQuery } from '@tanstack/react-query';
-import { Flex, Layout } from 'antd';
+import { Layout } from 'antd';
 import Cookies from 'js-cookie';
 import React, { useCallback, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -8,7 +7,7 @@ import { usePage } from '../context/PageContext';
 import { getInfoAccount } from '../service/clients/auth.service';
 import './PrivateLayout.scss';
 
-const { Content, Sider } = Layout;
+const { Content } = Layout;
 
 interface Props {
   children: React.JSX.Element | React.JSX.Element[];
