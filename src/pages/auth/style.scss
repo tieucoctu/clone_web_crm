@@ -1,0 +1,38 @@
+.login-page {
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+  position: relative;
+
+  .login-container__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    .login-logo {
+      margin-bottom: 72px;
+    }
+    .login-form {
+      min-width: 450px;
+      input:-webkit-autofill,
+      input:-webkit-autofill:focus {
+        transition:
+          background-color 0s 600000s,
+          color 0s 600000s !important;
+      }
+    }
+    .ant-form-item-control-input {
+      min-height: fit-content;
+    }
+  }
+}
+.wrap-main-login-sso {
+  height: 100vh;
+  .box-login-sso {
+    height: 100%;
+  }
+}

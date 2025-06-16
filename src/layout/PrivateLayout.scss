@@ -1,0 +1,10 @@
+.container-sider {
+  .ant-layout-sider-children {
+    background: white;
+
+    .container-menu {
+      height: calc(100vh - 104px);
+      overflow: auto;
+    }
+  }
+}
