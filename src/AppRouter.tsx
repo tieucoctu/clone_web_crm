@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Dashboard from './pages/dashboard/Dashboard';
-import { DASH_BOARD } from './configs/path';
+import LeadTable from './lead';
+import { DASH_BOARD, LeadList } from './configs/path';
 import PublicLayout from './layout/PublicLayout';
 import PrivateLayout from './layout/PrivateLayout';
 import AuthPage from './pages/auth';
@@ -13,6 +14,14 @@ const AppRouter: React.FC = () => {
         element={
           <PrivateLayout>
             <Dashboard />
+          </PrivateLayout>
+        }
+      />
+      <Route
+        path={LeadList}
+        element={
+          <PrivateLayout>
+            <LeadTable />
           </PrivateLayout>
         }
       />
