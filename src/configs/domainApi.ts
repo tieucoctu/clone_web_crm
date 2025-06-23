@@ -2,7 +2,6 @@ export const configs = {
   API_DOMAIN: import.meta.env.VITE_API_BASE_URL,
   API_DOMAIN_SSO: import.meta.env.VITE_API_SSO,
 };
-
 export const typeQueryVersionApi = {
   query: 'api/query/v1',
   domain: 'api/domain/v1',

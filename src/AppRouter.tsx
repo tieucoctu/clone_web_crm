@@ -1,10 +1,11 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Dashboard from './pages/dashboard/Dashboard';
-import LeadTable from './lead';
-import { DASH_BOARD, LeadList } from './configs/path';
+import LeadTable from './pages/lead/lead';
+import { DASH_BOARD, LEAD_COMMON, LEAD_LIST } from './configs/path';
 import PublicLayout from './layout/PublicLayout';
 import PrivateLayout from './layout/PrivateLayout';
 import AuthPage from './pages/auth';
+import LeadList from './pages/lead/leadlist';
 
 const AppRouter: React.FC = () => {
   return (
@@ -18,10 +19,18 @@ const AppRouter: React.FC = () => {
         }
       />
       <Route
-        path={LeadList}
+        path={LEAD_COMMON}
         element={
           <PrivateLayout>
             <LeadTable />
+          </PrivateLayout>
+        }
+      />
+      <Route
+        path={LEAD_LIST}
+        element={
+          <PrivateLayout>
+            <LeadList />
           </PrivateLayout>
         }
       />
