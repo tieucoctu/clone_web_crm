@@ -13,8 +13,10 @@ export interface BusinessLead {
   customerCode?: string;
   address?: string;
   status?: 'Đã kích hoạt' | 'Chưa kích hoạt';
-  leadStatus?: 'Mới' | 'Đang xử lý' | 'Đã chăm sóc';
+  leadStatus?: 'Mới' | 'Đang xử lý' | 'Đã xử lý';
   createdAt?: string;
+  updatedAt?: string;
+  sex?: 'male' | 'female';
 }
 export const fetchBusinessLead = async (): Promise<BusinessLead[]> => {
   const res = await axios.get('/api/business-leads');
@@ -32,6 +34,6 @@ export const deleteBusinessLead = async (id: string) => {
 };
 
 export const createBusinessLead = async (data: BusinessLead) => {
-  const response = await axios.post('/api/business-leads', data);
+  const response = await axios.post('/api/business-leads/batch', [data]);
   return response.data;
 };

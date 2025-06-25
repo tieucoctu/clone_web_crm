@@ -28,6 +28,32 @@ const Interface: React.FC<GiaodienProps> = () => {
           <Download />
         </Space>
       </div>
+      <div className="img">
+        <ul>
+          <li>
+            <img src="" />
+            ảnh 1
+          </li>
+          <li>ảnh 1</li>
+          <li>ảnh 1</li>
+          <li>ảnh 1</li>
+          <li>ảnh 1</li>
+        </ul>
+        <ul>
+          <li>ảnh 1</li>
+          <li>ảnh 1</li>
+          <li>ảnh 1</li>
+          <li>ảnh 1</li>
+          <li>ảnh 1</li>
+        </ul>
+        <ul>
+          <li>ảnh 1</li>
+          <li>ảnh 1</li>
+          <li>ảnh 1</li>
+          <li>ảnh 1</li>
+          <li>ảnh 1</li>
+        </ul>
+      </div>
     </div>
   );
 };

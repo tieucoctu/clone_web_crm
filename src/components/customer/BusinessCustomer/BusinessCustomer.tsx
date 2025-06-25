@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import CustomerTable from '../CustomerTable/CustomerTable';
-import CustomerForm from '../CustomerForm/CustomerForm';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { message, Modal } from 'antd';
 import { createBusinessLead, updateBusinessLead } from '../../api/leadsApi';
@@ -8,6 +6,9 @@ import type { BusinessLead } from '../../api/leadsApi';
 import AppHeader from '../../Header/Header';
 import Breadcrumb from '../../Breadcrumb/Breadcrumb';
 import './BusinessCustomer.scss';
+
+import CustomerTable from '../CustomerTable/CustomerTable';
+import CustomerForm from '../CustomerForm/CustomerForm';
 
 const BusinessCustomer = () => {
   const [openForm, setOpenForm] = useState(false);

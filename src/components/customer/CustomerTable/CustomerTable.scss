@@ -2,6 +2,8 @@
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
+  height: 100vh;
+  overflow: auto;
 }
 
 .breadcrumb {
@@ -31,4 +33,10 @@
 .searchIcon {
   font-size: 16px;
   color: #aaa;
+}
+.no-border-tag {
+  border: none !important;
+  border-radius: 4px;
+  padding: 0 8px;
+  font-size: 15px;
 }

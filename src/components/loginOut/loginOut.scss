@@ -2,7 +2,14 @@
   border-radius: 1px solid rgb(189, 179, 179);
 }
 .dropdown-menu-wrapper {
-  width: 150px;
-  height: 200px;
+  width: 300px;
+  height: 170px;
   padding: 20px 0 0 30px;
+}
+.dropdown-menu-wrapper-id {
+  opacity: 0.5;
+  pointer-events: none;
+}
+.login-out {
+  color: rgb(244, 31, 31);
 }

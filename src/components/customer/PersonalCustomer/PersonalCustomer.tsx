@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import CustomerTable from '../CustomerTable/CustomerTable';
-import CustomerForm from '../CustomerForm/CustomerForm';
+import CustomerTableIndividual from '../CustomerTable/CustomerTableIndividual';
+import CustomerFormIndividual from '../CustomerForm/CustomerFormIndividual';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { message, Modal } from 'antd';
 import { createBusinessLead, updateBusinessLead } from '../../api/leadsApi';
@@ -13,6 +13,8 @@ const PersonalCustomer = () => {
   const [openForm, setOpenForm] = useState(false);
   const [editingCustomer, setEditingCustomer] = useState<BusinessLead | null>(null);
   const queryClient = useQueryClient();
+  const [viewModalVisible, setViewModalVisible] = useState(false);
+  const [viewingCustomer, setViewingCustomer] = useState<BusinessLead | null>(null);
 
   const createMutation = useMutation({
     mutationFn: createBusinessLead,
@@ -44,7 +46,7 @@ const PersonalCustomer = () => {
           <Breadcrumbb />
         </div>
 
-        <CustomerForm
+        <CustomerFormIndividual
           visible={openForm}
           onClose={() => {
             setOpenForm(false);
@@ -60,7 +62,7 @@ const PersonalCustomer = () => {
           }}
         />
 
-        <CustomerTable
+        <CustomerTableIndividual
           onAddCustomerClick={() => {
             setEditingCustomer(null);
             setOpenForm(true);
@@ -75,28 +77,28 @@ const PersonalCustomer = () => {
               content: (
                 <div>
                   <p>
-                    <b>Tên:</b> {customer.name}
+                    <strong>Tên:</strong> {customer.name}
                   </p>
                   <p>
-                    <b>Số điện thoại:</b> {customer.phone}
+                    <strong>Người đại diện:</strong> {customer.representative}
                   </p>
                   <p>
-                    <b>Người đại diện:</b> {customer.representative}
+                    <strong>Số điện thoại:</strong> {customer.phone}
                   </p>
                   <p>
-                    <b>Email:</b> {customer.email}
+                    <strong>Email:</strong> {customer.email}
                   </p>
                   <p>
-                    <b>Mã số thuế:</b> {customer.taxCode}
+                    <strong>Mã số thuế:</strong> {customer.taxCode}
                   </p>
                   <p>
-                    <b>Trạng thái:</b> {customer.status}
+                    <strong>Trạng thái:</strong> {customer.status}
                   </p>
                   <p>
-                    <b>Nguồn:</b> {customer.leadStatus}
+                    <strong>Nguồn:</strong> {customer.leadStatus}
                   </p>
                   <p>
-                    <b>Ngày tạo:</b> {customer.createdAt}
+                    <strong>Ngày tạo:</strong> {customer.createdAt}
                   </p>
                 </div>
               ),

@@ -8,7 +8,7 @@ import Downloadd from '../../downloadd/downloadd';
 import { BusinessLead, deleteBusinessLead } from '../../api/leadsApi';
 import { Dropdown, Menu } from 'antd';
 import { MoreOutlined } from '@ant-design/icons';
-import CustomerCorporate from '../../Filter/FilterCustomerCorporate/CustomerCorporate';
+import CustomerIndividual from '../../Filter/FilterCustomerIndividual/CustomerIndividual';
 import type { ColumnsType } from 'antd/es/table';
 
 const { Search } = Input;
@@ -24,7 +24,11 @@ const fetchBusinessLead = async (): Promise<BusinessLead[]> => {
   return res.data;
 };
 
-const CustomerTable: React.FC<CustomerTableProps> = ({ onAddCustomerClick, onEditCustomer, onViewCustomer }) => {
+const CustomerTableIndividual: React.FC<CustomerTableProps> = ({
+  onAddCustomerClick,
+  onEditCustomer,
+  onViewCustomer,
+}) => {
   const [searchText, setSearchText] = useState('');
   const [filterVisible, setFilterVisible] = useState(false);
 
@@ -54,7 +58,7 @@ const CustomerTable: React.FC<CustomerTableProps> = ({ onAddCustomerClick, onEdi
   };
   const columns: ColumnsType<BusinessLead> = [
     { title: 'Tên công ty', dataIndex: 'name', key: 'name', fixed: 'left', width: 120 },
-    { title: 'Mã số thuế', dataIndex: 'taxCode', key: 'taxCode' },
+    { title: 'CCCD', dataIndex: 'taxCode', key: 'taxCode' },
     { title: 'Mã khách hàng', dataIndex: 'customerCode', key: 'customerCode' },
     { title: 'Số điện thoại', dataIndex: 'phone', key: 'phone' },
     { title: 'Email', dataIndex: 'email', key: 'email' },
@@ -78,7 +82,7 @@ const CustomerTable: React.FC<CustomerTableProps> = ({ onAddCustomerClick, onEdi
       dataIndex: 'updatedAt',
       key: 'updatedAt',
       width: 150,
-      render: (text: string) => (text ? new Date(text).toLocaleDateString() : '—'),
+      render: (text: string) => (text ? new Date(text).toLocaleString('vi-VN') : '—'),
     },
     {
       title: 'Hành động',
@@ -87,7 +91,7 @@ const CustomerTable: React.FC<CustomerTableProps> = ({ onAddCustomerClick, onEdi
       width: 120,
       render: (_: any, record: BusinessLead) => {
         const menu = (
-          <Menu style={{}}>
+          <Menu>
             <Menu.Item key="view" onClick={() => onViewCustomer(record)}>
               Xem chi tiết
             </Menu.Item>
@@ -163,7 +167,7 @@ const CustomerTable: React.FC<CustomerTableProps> = ({ onAddCustomerClick, onEdi
                 open={filterVisible}
                 onOpenChange={setFilterVisible}
                 overlay={
-                  <CustomerCorporate
+                  <CustomerIndividual
                     onFilter={data => {
                       console.log('Dữ liệu lọc:', data);
                       setFilterVisible(false);
@@ -193,7 +197,7 @@ const CustomerTable: React.FC<CustomerTableProps> = ({ onAddCustomerClick, onEdi
           </div>
         </div>
       </div>
-      <Table
+      <Table<BusinessLead>
         dataSource={filteredData}
         columns={columns}
         rowKey="id"
@@ -204,4 +208,4 @@ const CustomerTable: React.FC<CustomerTableProps> = ({ onAddCustomerClick, onEdi
   );
 };
 
-export default CustomerTable;
+export default CustomerTableIndividual;
