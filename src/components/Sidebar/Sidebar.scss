@@ -1,0 +1,20 @@
+.sidebarMenu {
+  font-size: 12px;
+
+  .ant-menu-item {
+    padding-left: 2px;
+
+    &:hover {
+      background-color: #e6f4ff;
+    }
+
+    &.ant-menu-item-selected {
+      background-color: #cce4ff;
+      font-weight: bold;
+    }
+
+    .anticon {
+      color: #003366;
+    }
+  }
+}

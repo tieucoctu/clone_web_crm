@@ -15,6 +15,12 @@ export default defineConfig({
   server: {
     open: true,
     port: 3000,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5000',
+        changeOrigin: true,
+      },
+    },
   },
   build: {
     target: 'esnext',
@@ -24,5 +30,5 @@ export default defineConfig({
       },
     },
   },
-  assetsInclude: ['**/*.xlsx,**/*.worker.js'],
+  assetsInclude: ['**/*.xlsx', '**/*.worker.js'],
 });

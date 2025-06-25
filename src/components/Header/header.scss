@@ -1,0 +1,50 @@
+.header {
+  background-color: #0d549b;
+  color: #fff;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding-left: 10px;
+}
+
+.menuIcon {
+  color: #fff;
+  font-size: 14px;
+}
+
+.menuButton {
+  margin-right: 6px;
+}
+
+.title {
+  color: white;
+  font-size: 16px;
+}
+
+.headerRight {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.notificationIcon {
+  background-color: #174a79;
+  color: white;
+  font-size: 18px;
+  width: 28px;
+  height: 24px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  border-radius: 70%;
+}
+
+.avatar {
+  background-color: #174a79;
+  cursor: pointer;
+  font-size: 18px;
+  width: 20px;
+  height: 24px;
+}
