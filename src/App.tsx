@@ -19,7 +19,7 @@ function App() {
           queries: {
             refetchOnWindowFocus: false,
             retry: 2,
-            staleTime: Infinity,
+            staleTime: Infinity, // Prevents refetching data on window focus
           },
         },
       }),
