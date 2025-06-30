@@ -1,11 +1,12 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Dashboard from './pages/dashboard/Dashboard';
-import { DASH_BOARD, URL_USER_ROLE } from './configs/path';
+import { DASH_BOARD, URL_USER_ROLE, URL_LEAD_COMMON } from './configs/path';
 import PublicLayout from './layout/PublicLayout';
 import PrivateLayout from './layout/PrivateLayout';
 import AuthPage from './pages/auth';
 import { lazy } from 'react';
-const ListOfRoleManagement = lazy(() => import('./pages/rolesManagement/listOfRoleManagement'));
+import LeadCommon from './pages/LeadCommon/listOfLead';
+import ListOfRoleManagement from './pages/rolesManagement/listOfRoleManagement';
 
 const AppRouter: React.FC = () => {
   return (
@@ -23,6 +24,14 @@ const AppRouter: React.FC = () => {
         element={
           <PrivateLayout>
             <ListOfRoleManagement />
+          </PrivateLayout>
+        }
+      />
+      <Route
+        path={URL_LEAD_COMMON}
+        element={
+          <PrivateLayout>
+            <LeadCommon />
           </PrivateLayout>
         }
       />
