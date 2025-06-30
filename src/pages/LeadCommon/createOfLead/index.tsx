@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal, Form, Select, Input, Button, Space, message } from 'antd';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { getListOfLeadsSource, getListOfLeadsRepo, getLeadRepoConfigs, createLead } from '../../../service/leads';
 import { DEFAULT_PARAMS } from '../../../contanst';
 
@@ -11,7 +11,7 @@ const CreateLeadModal: React.FC = () => {
     const [form] = Form.useForm();
     const [selectedRepoId, setSelectedRepoId] = React.useState<string | null>(null);
     const [isVisible, setIsVisible] = React.useState(false);
-    const [loading, setLoading] = React.useState(false);
+    const queryClient = useQueryClient();
 
     const { data: leadSources } = useQuery({
         queryFn: () => getListOfLeadsSource(DEFAULT_PARAMS),
@@ -43,19 +43,22 @@ const CreateLeadModal: React.FC = () => {
         setSelectedRepoId(null);
     };
 
-    const handleSubmit = async (values: any) => {
-        setLoading(true);
-        try {
-            await createLead(values);
+    const createLeadMutation = useMutation({
+        mutationFn: createLead,
+        onSuccess: () => {
             message.success('Tạo lead thành công!');
             setIsVisible(false);
             form.resetFields();
             setSelectedRepoId(null);
-        } catch (error) {
-            message.error('Có lỗi xảy ra khi tạo lead!');
-        } finally {
-            setLoading(false);
-        }
+            queryClient.invalidateQueries({ queryKey: ['list-of-leads'] });
+        },
+        onError: () => {
+            message.error('Có lỗi khi tạo lead!');
+        },
+    });
+
+    const handleSubmit = async (values: any) => {
+        createLeadMutation.mutate(values);
     };
 
     const handleRepoChange = (value: string) => {       //bỏ Cấu hình phân bổ khi chọn Kho phân bổ khác
@@ -122,7 +125,7 @@ const CreateLeadModal: React.FC = () => {
 
                     <Form.Item>
                         <Space>
-                            <Button type="primary" htmlType="submit" loading={loading}>
+                            <Button type="primary" htmlType="submit" loading={createLeadMutation.isPending}>
                                 Tạo Lead
                             </Button>
                             <Button onClick={handleCancel}>
